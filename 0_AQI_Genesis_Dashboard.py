@@ -43,7 +43,7 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # --- 1.5 SECURITY GATEWAY (THE PAYWALL) ---
-TERMINAL_KEY = "GENESIS-APR-928" # Change this on the 1st of every month
+TERMINAL_KEY = "1" # Change this on the 1st of every month
 
 if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
