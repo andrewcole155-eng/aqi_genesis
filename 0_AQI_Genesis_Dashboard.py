@@ -314,16 +314,17 @@ if df is not None:
         time_array = np.arange(len(df_3d))
         cinematic_gradient = [[0.0, '#00D2FF'], [0.5, '#FF3366'], [1.0, '#FFD700']]
         
-        # 2. Fluid Trajectory (Neon Edge Lighting feel)
+        # 2. Fluid Trajectory (Thinner and more transparent to let points shine)
         fig_3d.add_trace(go.Scatter3d(
             x=df_3d['sahm_gap_smooth'], y=df_3d['velocity'], z=df_3d['acceleration'], 
             mode='lines', name='Time Trajectory', 
-            line=dict(color=time_array, colorscale=cinematic_gradient, width=4),
-            opacity=0.75 # Softens the line to look like glowing plasma
+            line=dict(color=time_array, colorscale=cinematic_gradient, width=1.5), # Thinned down from 4
+            opacity=0.4 # Pushed into the background
         ))
         
-        # 3. The "Bloom / Glow" Hack for Spheres
-        energy_sizes = np.interp(df_3d['kinetic_energy'], [df_3d['kinetic_energy'].min(), df_3d['kinetic_energy'].max()], [4, 16])
+        # 3. The "Bloom / Glow" Hack for Spheres (Bigger and better defined)
+        # Scaled up the minimum and maximum sizes so points are physically larger
+        energy_sizes = np.interp(df_3d['kinetic_energy'], [df_3d['kinetic_energy'].min(), df_3d['kinetic_energy'].max()], [6, 22])
         
         #   Layer A: The soft glowing outer halo
         fig_3d.add_trace(go.Scatter3d(
@@ -332,18 +333,19 @@ if df is not None:
             marker=dict(size=energy_sizes, color=time_array, colorscale=cinematic_gradient, opacity=0.15, line=dict(width=0)),
             hoverinfo='skip', showlegend=False
         ))
-        #   Layer B: The solid inner core
+        #   Layer B: The solid inner core (Added a faint white border to make them pop)
         fig_3d.add_trace(go.Scatter3d(
             x=df_3d['sahm_gap_smooth'], y=df_3d['velocity'], z=df_3d['acceleration'], 
             mode='markers', name='Kinematic State', 
-            marker=dict(size=energy_sizes * 0.4, color=time_array, colorscale=cinematic_gradient, opacity=0.9, line=dict(width=0))
+            marker=dict(size=energy_sizes * 0.5, color=time_array, colorscale=cinematic_gradient, opacity=0.9, line=dict(width=0.5, color='rgba(255,255,255,0.4)'))
         ))
         
-        # 4. Subtle Recession Clusters
+        # 4. MASSIVE Recession Clusters
         fig_3d.add_trace(go.Scatter3d(
             x=df_recessions['sahm_gap_smooth'], y=df_recessions['velocity'], z=df_recessions['acceleration'], 
             mode='markers', name='Recession Clusters', 
-            marker=dict(size=3, color=COLOR_WARN, opacity=0.8, symbol='cross')
+            # Changed from tiny size-3 crosses to large size-12 spheres with stark white borders
+            marker=dict(size=12, color=COLOR_WARN, opacity=1.0, symbol='circle', line=dict(color='#FFFFFF', width=2))
         ))
         
         # 5. Volumetric "Forecast Cone" (Glassmorphism lighting)
