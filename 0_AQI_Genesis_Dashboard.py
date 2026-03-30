@@ -286,7 +286,7 @@ if df is not None:
     with tab3:
         st.markdown(f"<p style='color: {TEXT_COLOR}; font-size: 14px;'>Drag to rotate the model. Scroll to zoom in on specific historical trajectories.</p>", unsafe_allow_html=True)
         
-        df_3d = df[df.index > '2005-01-01'].copy()
+        df_3d = df[df.index > '1990-01-01'].copy()
         
         # Projections
         latest = df_3d.iloc[-1]
