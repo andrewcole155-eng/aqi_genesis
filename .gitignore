@@ -1,0 +1,14 @@
+# Security
+config.json
+
+# Caches and Weights
+*.pkl
+*.h5
+
+# Output Files
+*.md
+*.html
+*.png
+
+# Mac/OS junk (just in case)
+.DS_Store
