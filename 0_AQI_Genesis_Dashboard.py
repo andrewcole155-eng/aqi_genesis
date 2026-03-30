@@ -43,10 +43,15 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # --- 1.5 SECURITY GATEWAY (THE PAYWALL) ---
-TERMINAL_KEY = "1" # Change this on the 1st of every month
+ENABLE_PAYWALL = True  # <--- SET TO False TO TURN OFF THE PASSWORD REQUIREMENT
+TERMINAL_KEY = "q1"    # Change this on the 1st of every month
 
 if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
+
+# If the paywall is disabled, bypass authentication automatically
+if not ENABLE_PAYWALL:
+    st.session_state["authenticated"] = True
 
 if not st.session_state["authenticated"]:
     # The Login Screen
