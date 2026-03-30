@@ -322,8 +322,12 @@ if df is not None:
             opacity=0.4 # Pushed into the background
         ))
         
+        # --- PREPARE DATE LABELS ---
+        dates_3d = df_3d.index.strftime('%b %Y')
+        dates_rec = df_recessions.index.strftime('%b %Y')
+        current_date_str = latest.name.strftime('%b %Y')
+        
         # 3. The "Bloom / Glow" Hack for Spheres (Bigger and better defined)
-        # Scaled up the minimum and maximum sizes so points are physically larger
         energy_sizes = np.interp(df_3d['kinetic_energy'], [df_3d['kinetic_energy'].min(), df_3d['kinetic_energy'].max()], [6, 22])
         
         #   Layer A: The soft glowing outer halo
@@ -333,30 +337,35 @@ if df is not None:
             marker=dict(size=energy_sizes, color=time_array, colorscale=cinematic_gradient, opacity=0.15, line=dict(width=0)),
             hoverinfo='skip', showlegend=False
         ))
-        #   Layer B: The solid inner core (Added a faint white border to make them pop)
+        
+        #   Layer B: The solid inner core (NOW WITH DATE TOOLTIPS)
         fig_3d.add_trace(go.Scatter3d(
             x=df_3d['sahm_gap_smooth'], y=df_3d['velocity'], z=df_3d['acceleration'], 
             mode='markers', name='Kinematic State', 
-            marker=dict(size=energy_sizes * 0.5, color=time_array, colorscale=cinematic_gradient, opacity=0.9, line=dict(width=0.5, color='rgba(255,255,255,0.4)'))
+            marker=dict(size=energy_sizes * 0.5, color=time_array, colorscale=cinematic_gradient, opacity=0.9, line=dict(width=0.5, color='rgba(255,255,255,0.4)')),
+            text=dates_3d,
+            customdata=df_3d['kinetic_energy'],
+            hovertemplate="<b>%{text}</b><br>Position: %{x:.2f}<br>Velocity: %{y:.2f}<br>Energy: %{customdata:.1f}<extra></extra>"
         ))
         
-        # 4. MASSIVE Recession Clusters
+        # 4. MASSIVE Recession Clusters (NOW WITH ALERT TOOLTIPS)
         fig_3d.add_trace(go.Scatter3d(
             x=df_recessions['sahm_gap_smooth'], y=df_recessions['velocity'], z=df_recessions['acceleration'], 
             mode='markers', name='Recession Clusters', 
-            # Changed from tiny size-3 crosses to large size-12 spheres with stark white borders
-            marker=dict(size=12, color=COLOR_WARN, opacity=1.0, symbol='circle', line=dict(color='#FFFFFF', width=2))
+            marker=dict(size=12, color=COLOR_WARN, opacity=1.0, symbol='circle', line=dict(color='#FFFFFF', width=2)),
+            text=dates_rec,
+            hovertemplate="<b>⚠️ RECESSION: %{text}</b><br>Velocity: %{y:.2f}<br>Accel: %{z:.2f}<extra></extra>"
         ))
         
-        # 5. Volumetric "Forecast Cone" (Glassmorphism lighting)
+        # 5. Volumetric "Forecast Cone"
         scale = 0.5 
         fig_3d.add_trace(go.Cone(
             x=[latest['sahm_gap_smooth']], y=[latest['velocity']], z=[latest['acceleration']], 
             u=[latest['momentum'] * scale], v=[latest['velocity'] * scale], w=[latest['acceleration'] * scale], 
             colorscale=[[0, state_color], [1, state_color]], showscale=False, name='Probability Cloud',
             sizemode="absolute", sizeref=3.5, 
-            opacity=0.45, # Creates the semi-transparent volumetric fog feel
-            lighting=dict(ambient=0.6, diffuse=0.5, specular=1.0, roughness=0.1, fresnel=0.8) # High specularity = glass
+            opacity=0.45, hoverinfo='skip',
+            lighting=dict(ambient=0.6, diffuse=0.5, specular=1.0, roughness=0.1, fresnel=0.8) 
         ))
         
         # 6. Smooth Forecast Projection
@@ -366,15 +375,16 @@ if df is not None:
             z=[latest['acceleration'], latest['acceleration'], latest['acceleration'], proj_a], 
             mode='lines', name='Forward Probability', 
             line=dict(color=state_color, width=6, dash='solid'),
-            opacity=0.9
+            opacity=0.9, hoverinfo='skip'
         ))
         
-        # 7. Focal Point (Current Status)
+        # 7. Focal Point (Current Status - UPGRADED TOOLTIP)
         fig_3d.add_trace(go.Scatter3d(
             x=[latest['sahm_gap_smooth']], y=[latest['velocity']], z=[latest['acceleration']], 
             mode='markers', name='CURRENT', 
-            marker=dict(size=12, color=state_color, symbol='circle', line=dict(color='#FFFFFF', width=3)), 
-            text=[f"Status: {state_color.upper()}<br>Energy: {latest['kinetic_energy']:.2f}"]
+            marker=dict(size=14, color=state_color, symbol='circle', line=dict(color='#FFFFFF', width=3)), 
+            text=[f"<b>TODAY: {current_date_str}</b><br>Status: {state_color.upper()}<br>Energy: {latest['kinetic_energy']:.2f}"],
+            hovertemplate="%{text}<extra></extra>"
         ))
         
         # --- SCENE ENVIRONMENT ---
