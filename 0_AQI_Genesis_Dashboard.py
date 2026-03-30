@@ -285,7 +285,7 @@ if df is not None:
         for annotation in fig_physics['layout']['annotations']: annotation['font'] = dict(size=12, color=TEXT_COLOR)
         st.plotly_chart(fig_physics, use_container_width=True)
 
-    # ==========================================
+# ==========================================
     # TAB 3: 3D KINEMATICS (HOLOGRAPHIC RENDER)
     # ==========================================
     with tab3:
@@ -309,80 +309,98 @@ if df is not None:
         
         fig_3d = go.Figure()
         
-        # 1. Ghosted Historical Path (Thinner, highly transparent to remove the 'spaghetti' effect)
+        # --- AESTHETIC UPGRADES ---
+        # 1. Cyan -> Magenta -> Amber Time Gradient
+        time_array = np.arange(len(df_3d))
+        cinematic_gradient = [[0.0, '#00D2FF'], [0.5, '#FF3366'], [1.0, '#FFD700']]
+        
+        # 2. Fluid Trajectory (Neon Edge Lighting feel)
         fig_3d.add_trace(go.Scatter3d(
             x=df_3d['sahm_gap_smooth'], y=df_3d['velocity'], z=df_3d['acceleration'], 
-            mode='lines', name='Historical Path', 
-            line=dict(color='rgba(160, 174, 192, 0.15)', width=2)
+            mode='lines', name='Time Trajectory', 
+            line=dict(color=time_array, colorscale=cinematic_gradient, width=4),
+            opacity=0.75 # Softens the line to look like glowing plasma
         ))
         
-        # 2. Soft Glowing Spheres for History (Using a cooler, tech-focused colorscale)
-        energy_sizes = np.interp(df_3d['kinetic_energy'], [df_3d['kinetic_energy'].min(), df_3d['kinetic_energy'].max()], [3, 12])
+        # 3. The "Bloom / Glow" Hack for Spheres
+        energy_sizes = np.interp(df_3d['kinetic_energy'], [df_3d['kinetic_energy'].min(), df_3d['kinetic_energy'].max()], [4, 16])
+        
+        #   Layer A: The soft glowing outer halo
         fig_3d.add_trace(go.Scatter3d(
             x=df_3d['sahm_gap_smooth'], y=df_3d['velocity'], z=df_3d['acceleration'], 
-            mode='markers', name='History', 
-            marker=dict(
-                size=energy_sizes, color=df_3d['jerk_z'], colorscale='IceFire', opacity=0.5,
-                line=dict(width=0) # Removed hard borders for a softer look
-            )
+            mode='markers', name='Energy Glow', 
+            marker=dict(size=energy_sizes, color=time_array, colorscale=cinematic_gradient, opacity=0.15, line=dict(width=0)),
+            hoverinfo='skip', showlegend=False
+        ))
+        #   Layer B: The solid inner core
+        fig_3d.add_trace(go.Scatter3d(
+            x=df_3d['sahm_gap_smooth'], y=df_3d['velocity'], z=df_3d['acceleration'], 
+            mode='markers', name='Kinematic State', 
+            marker=dict(size=energy_sizes * 0.4, color=time_array, colorscale=cinematic_gradient, opacity=0.9, line=dict(width=0))
         ))
         
-        # 3. Subtle Recession Zones (Deep crimson, slight glow)
+        # 4. Subtle Recession Clusters
         fig_3d.add_trace(go.Scatter3d(
             x=df_recessions['sahm_gap_smooth'], y=df_recessions['velocity'], z=df_recessions['acceleration'], 
-            mode='markers', name='Recession Zones', 
-            marker=dict(size=4, color=COLOR_WARN, opacity=0.6)
+            mode='markers', name='Recession Clusters', 
+            marker=dict(size=3, color=COLOR_WARN, opacity=0.8, symbol='cross')
         ))
         
-        # 4. Neon Forecast Line (Dotted, cleaner trajectory)
+        # 5. Volumetric "Forecast Cone" (Glassmorphism lighting)
+        scale = 0.5 
+        fig_3d.add_trace(go.Cone(
+            x=[latest['sahm_gap_smooth']], y=[latest['velocity']], z=[latest['acceleration']], 
+            u=[latest['momentum'] * scale], v=[latest['velocity'] * scale], w=[latest['acceleration'] * scale], 
+            colorscale=[[0, state_color], [1, state_color]], showscale=False, name='Probability Cloud',
+            sizemode="absolute", sizeref=3.5, 
+            opacity=0.45, # Creates the semi-transparent volumetric fog feel
+            lighting=dict(ambient=0.6, diffuse=0.5, specular=1.0, roughness=0.1, fresnel=0.8) # High specularity = glass
+        ))
+        
+        # 6. Smooth Forecast Projection
         fig_3d.add_trace(go.Scatter3d(
             x=[latest['sahm_gap_smooth']] + proj_gaps, 
             y=[latest['velocity'], latest['velocity'], latest['velocity'], proj_v], 
             z=[latest['acceleration'], latest['acceleration'], latest['acceleration'], proj_a], 
-            mode='lines', name='3M Forecast', 
-            line=dict(color=state_color, width=5, dash='dot')
+            mode='lines', name='Forward Probability', 
+            line=dict(color=state_color, width=6, dash='solid'),
+            opacity=0.9
         ))
         
-        # 5. Metallic Rendered Momentum Cone (Sleeker proportions, light reflection physics)
-        scale = 0.4 
-        fig_3d.add_trace(go.Cone(
-            x=[latest['sahm_gap_smooth']], y=[latest['velocity']], z=[latest['acceleration']], 
-            u=[latest['momentum'] * scale], v=[latest['velocity'] * scale], w=[latest['acceleration'] * scale], 
-            colorscale=[[0, state_color], [1, state_color]], showscale=False, name='Momentum Vector',
-            sizemode="absolute", sizeref=3, # Makes the cone thinner and sharper
-            lighting=dict(ambient=0.3, diffuse=0.8, specular=0.8, roughness=0.2, fresnel=0.2) # Brushed metal effect
-        ))
-        
-        # 6. Sleek Current State Indicator (Sphere with a crisp halo)
+        # 7. Focal Point (Current Status)
         fig_3d.add_trace(go.Scatter3d(
             x=[latest['sahm_gap_smooth']], y=[latest['velocity']], z=[latest['acceleration']], 
             mode='markers', name='CURRENT', 
-            marker=dict(size=14, color=state_color, symbol='circle', line=dict(color='#FFFFFF', width=2)), 
+            marker=dict(size=12, color=state_color, symbol='circle', line=dict(color='#FFFFFF', width=3)), 
             text=[f"Status: {state_color.upper()}<br>Energy: {latest['kinetic_energy']:.2f}"]
         ))
         
-        # 7. Holographic Environment (No walls, ghosted grid)
+        # --- SCENE ENVIRONMENT ---
+        CINEMATIC_NAVY = "#050814"
+        THIN_GRID = "rgba(255, 255, 255, 0.06)"
+        
         axis_format = dict(
-            showbackground=False, 
-            gridcolor="rgba(255, 255, 255, 0.03)", 
-            zerolinecolor="rgba(255, 255, 255, 0.08)",
-            tickfont=dict(color="rgba(255, 255, 255, 0.3)"),
-            title_font=dict(color="rgba(255, 255, 255, 0.6)")
+            showbackground=True, 
+            backgroundcolor=CINEMATIC_NAVY, # Deep Navy to Charcoal gradient illusion
+            gridcolor=THIN_GRID, 
+            zerolinecolor="rgba(255, 255, 255, 0.15)",
+            tickfont=dict(color="rgba(255, 255, 255, 0.3)", family="Arial, sans-serif"),
+            title_font=dict(color="rgba(255, 255, 255, 0.7)", family="Arial, sans-serif", size=13),
+            showspikes=False # Removes visual clutter
         )
         
-        # Dynamic color-coded title acting as the space-saving legend
-        title_html = f"<b>3D KINEMATICS</b> | <span style='color:#A0AEC0'>Historical Path</span> | <span style='color:{COLOR_WARN}'>Recessions</span> | <span style='color:{state_color}'>Current & Forecast</span>"
+        title_html = f"<b>SYSTEM KINEMATICS</b> | <span style='color:#00D2FF'>Historical Momentum</span> | <span style='color:{COLOR_WARN}'>Contractions</span> | <span style='color:{state_color}'>Volumetric Forecast</span>"
         
         fig_3d.update_layout(
             title=dict(text=title_html, font=dict(size=14, color=TEXT_COLOR), x=0.0, y=0.98),
-            showlegend=False, # <--- This kills the bulky side legend
+            showlegend=False, 
             paper_bgcolor=BG_COLOR,
             plot_bgcolor=BG_COLOR,
             scene=dict(
                 xaxis_title='Cole Pulse (Position)', yaxis_title='Risk Velocity', zaxis_title='Acceleration',
                 xaxis=axis_format, yaxis=axis_format, zaxis=axis_format,
-                camera=dict(eye=dict(x=1.5, y=1.5, z=0.5)) 
+                camera=dict(eye=dict(x=1.6, y=1.6, z=0.6)) 
             ),
-            height=850, margin=dict(l=0, r=0, t=40, b=0) # Increased top margin (t=40) to fit the new title
+            height=850, margin=dict(l=0, r=0, t=40, b=0) 
         )
         st.plotly_chart(fig_3d, use_container_width=True)
