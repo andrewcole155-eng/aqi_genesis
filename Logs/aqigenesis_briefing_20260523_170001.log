@@ -1,0 +1,65 @@
+17:00:09 - --- Starting Grand Unified Data Ingestion ---
+17:00:09 - Fetching Physics Engine Inputs (Job Losers, Income, Hours)...
+17:00:14 - Fetching US Core Macro...
+17:00:24 - Fetching Global Policy Inputs...
+17:00:48 - Fetching Market Internals...
+17:01:08 - 💾 Saved fresh data to local cache.
+17:01:08 - Initializing Continuous Cole Pulse Physics Engine...
+17:01:09 - Running Multivariate LSTM Forecast (CPU Execution)...
+17:01:09 - Loaded cached LSTM weights.
+17:01:11 - Generating Grand Unified Dashboard (Macro + Physics + 3D)...
+17:01:18 - Chromium init'ed with kwargs {}
+17:01:18 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
+17:01:18 - Temp directory created: /tmp/tmp786pmpah.
+17:01:18 - Opening browser.
+17:01:18 - Temp directory created: /tmp/tmpe9t02cz8.
+17:01:18 - Temporary directory at: /tmp/tmpe9t02cz8
+17:01:21 - Closing browser.
+17:01:21 - Closing browser.
+17:01:21 - TemporaryDirectory.cleanup() worked.
+17:01:21 - shutil.rmtree worked.
+17:01:21 - TemporaryDirectory.cleanup() worked.
+17:01:21 - shutil.rmtree worked.
+17:01:21 - TemporaryDirectory.cleanup() worked.
+17:01:21 - shutil.rmtree worked.
+17:01:21 - TemporaryDirectory.cleanup() worked.
+17:01:21 - shutil.rmtree worked.
+17:01:21 - Chromium init'ed with kwargs {}
+17:01:21 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
+17:01:21 - Temp directory created: /tmp/tmpfahd4cv4.
+17:01:21 - Opening browser.
+17:01:21 - Temp directory created: /tmp/tmptya4002b.
+17:01:21 - Temporary directory at: /tmp/tmptya4002b
+17:01:25 - Closing browser.
+17:01:25 - Closing browser.
+17:01:25 - TemporaryDirectory.cleanup() worked.
+17:01:25 - shutil.rmtree worked.
+17:01:25 - TemporaryDirectory.cleanup() worked.
+17:01:25 - shutil.rmtree worked.
+17:01:25 - TemporaryDirectory.cleanup() worked.
+17:01:25 - shutil.rmtree worked.
+17:01:25 - Chromium init'ed with kwargs {}
+17:01:25 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
+17:01:25 - Temp directory created: /tmp/tmplbbm0poc.
+17:01:25 - Opening browser.
+17:01:25 - Temp directory created: /tmp/tmpko67oyks.
+17:01:25 - Temporary directory at: /tmp/tmpko67oyks
+17:01:29 - Closing browser.
+17:01:29 - Closing browser.
+17:01:29 - TemporaryDirectory.cleanup() worked.
+17:01:29 - shutil.rmtree worked.
+17:01:30 - TemporaryDirectory.cleanup() worked.
+17:01:30 - shutil.rmtree worked.
+17:01:30 - TemporaryDirectory.cleanup() worked.
+17:01:30 - shutil.rmtree worked.
+17:01:30 - ✅ Saved high-res static PNGs for Substack export.
+17:01:30 - Saved AQI_Unified.html and standalone AQI_3d_physics_model.html
+17:01:30 - Generating Two-Tiered Substack Briefing (Free vs Paid)...
+17:01:58 - ✅ Substack Draft generated: /home/andrew/.ssh/Trading/AQI_Genesis/Substack_Draft_20260523.md
+17:01:58 - 💾 Pushing live data matrix to SaaS Database (Streamlit backend)...
+17:01:58 - ✅ SaaS Database updated. The AQI Genesis Streamlit Terminal is now live.
+17:02:19 - ✅ Briefing Sent Successfully.
+17:02:19 - TemporaryDirectory.cleanup() worked.
+17:02:19 - shutil.rmtree worked.
+17:02:19 - TemporaryDirectory.cleanup() worked.
+17:02:19 - shutil.rmtree worked.
