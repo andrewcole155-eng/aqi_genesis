@@ -336,7 +336,7 @@ def generate_freemium_analysis(api_key: str, context: Dict) -> Tuple[str, str]:
     logging.info("Generating Two-Tiered Substack Briefing (Free vs Paid)...")
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-2.5-flash') 
+        model = genai.GenerativeModel('gemini-3.5-flash') 
         
         # --- THE FREE TEASER PROMPT (Macro Context Only) ---
         free_prompt = f"""
