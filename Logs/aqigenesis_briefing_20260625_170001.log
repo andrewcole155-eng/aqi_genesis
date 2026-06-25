@@ -1,23 +1,22 @@
 17:00:07 - --- Starting Grand Unified Data Ingestion ---
 17:00:07 - Fetching Physics Engine Inputs (Job Losers, Income, Hours)...
-17:00:17 - Fetching US Core Macro...
-17:00:32 - Fetching Global Policy Inputs...
-17:01:03 - Fetching Market Internals...
-17:01:25 - 💾 Saved fresh data to local cache.
-17:01:25 - Initializing Continuous Cole Pulse Physics Engine...
-17:01:25 - Running Multivariate LSTM Forecast (CPU Execution)...
-17:01:26 - Loaded cached LSTM weights.
-17:01:28 - Generating Grand Unified Dashboard (Macro + Physics + 3D)...
-17:01:35 - Chromium init'ed with kwargs {}
-17:01:35 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
-17:01:35 - Temp directory created: /tmp/tmpfdasbbm9.
-17:01:35 - Opening browser.
-17:01:35 - Temp directory created: /tmp/tmpdaowj3g9.
-17:01:35 - Temporary directory at: /tmp/tmpdaowj3g9
+17:00:12 - Fetching US Core Macro...
+17:00:24 - Fetching Global Policy Inputs...
+17:00:45 - Fetching Market Internals...
+17:01:06 - 💾 Saved fresh data to local cache.
+17:01:06 - Initializing Continuous Cole Pulse Physics Engine...
+17:01:06 - Running Multivariate LSTM Forecast (CPU Execution)...
+17:01:07 - Training LSTM from scratch (This may take a moment)...
+17:01:27 - Saved new LSTM weights to cache.
+17:01:29 - Generating Grand Unified Dashboard (Macro + Physics + 3D)...
+17:01:36 - Chromium init'ed with kwargs {}
+17:01:36 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
+17:01:36 - Temp directory created: /tmp/tmpe8v2_w7_.
+17:01:36 - Opening browser.
+17:01:36 - Temp directory created: /tmp/tmpndpf8ie7.
+17:01:36 - Temporary directory at: /tmp/tmpndpf8ie7
 17:01:39 - Closing browser.
 17:01:39 - Closing browser.
-17:01:39 - TemporaryDirectory.cleanup() worked.
-17:01:39 - shutil.rmtree worked.
 17:01:39 - TemporaryDirectory.cleanup() worked.
 17:01:39 - shutil.rmtree worked.
 17:01:39 - TemporaryDirectory.cleanup() worked.
@@ -26,10 +25,10 @@
 17:01:39 - shutil.rmtree worked.
 17:01:39 - Chromium init'ed with kwargs {}
 17:01:39 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
-17:01:39 - Temp directory created: /tmp/tmpnxpkxisl.
+17:01:39 - Temp directory created: /tmp/tmpk6vb3nyx.
 17:01:39 - Opening browser.
-17:01:39 - Temp directory created: /tmp/tmpph0y1nso.
-17:01:39 - Temporary directory at: /tmp/tmpph0y1nso
+17:01:39 - Temp directory created: /tmp/tmpx6gy11x_.
+17:01:39 - Temporary directory at: /tmp/tmpx6gy11x_
 17:01:43 - Closing browser.
 17:01:43 - Closing browser.
 17:01:43 - TemporaryDirectory.cleanup() worked.
@@ -40,14 +39,14 @@
 17:01:43 - shutil.rmtree worked.
 17:01:43 - Chromium init'ed with kwargs {}
 17:01:43 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
-17:01:43 - Temp directory created: /tmp/tmpi4sgasi1.
+17:01:43 - Temp directory created: /tmp/tmpzu4gfj3p.
 17:01:43 - Opening browser.
-17:01:43 - Temp directory created: /tmp/tmp5dga5i72.
-17:01:44 - Temporary directory at: /tmp/tmp5dga5i72
-17:01:48 - Closing browser.
-17:01:48 - Closing browser.
-17:01:48 - TemporaryDirectory.cleanup() worked.
-17:01:48 - shutil.rmtree worked.
+17:01:43 - Temp directory created: /tmp/tmp6jo1bqpc.
+17:01:43 - Temporary directory at: /tmp/tmp6jo1bqpc
+17:01:47 - Closing browser.
+17:01:47 - Closing browser.
+17:01:47 - TemporaryDirectory.cleanup() worked.
+17:01:47 - shutil.rmtree worked.
 17:01:48 - TemporaryDirectory.cleanup() worked.
 17:01:48 - shutil.rmtree worked.
 17:01:48 - TemporaryDirectory.cleanup() worked.
@@ -55,10 +54,12 @@
 17:01:48 - ✅ Saved high-res static PNGs for Substack export.
 17:01:48 - Saved AQI_Unified.html and standalone AQI_3d_physics_model.html
 17:01:48 - Generating Two-Tiered Substack Briefing (Free vs Paid)...
-17:02:13 - ✅ Substack Draft generated: /home/andrew/.ssh/Trading/AQI_Genesis/Substack_Draft_20260526.md
+17:02:13 - ✅ Substack Draft generated: /home/andrew/.ssh/Trading/AQI_Genesis/Substack_Draft_20260625.md
 17:02:13 - 💾 Pushing live data matrix to SaaS Database (Streamlit backend)...
 17:02:13 - ✅ SaaS Database updated. The AQI Genesis Streamlit Terminal is now live.
-17:02:35 - ✅ Briefing Sent Successfully.
+17:02:34 - ✅ Briefing Sent Successfully.
+17:02:35 - TemporaryDirectory.cleanup() worked.
+17:02:35 - shutil.rmtree worked.
 17:02:35 - TemporaryDirectory.cleanup() worked.
 17:02:35 - shutil.rmtree worked.
 17:02:35 - TemporaryDirectory.cleanup() worked.
