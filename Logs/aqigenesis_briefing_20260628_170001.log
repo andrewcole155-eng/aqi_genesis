@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/andrew/.ssh/Trading/AQI_Genesis/0_AQI_Genesis.py", line 28, in <module>
+    import yfinance as yf
+  File "/home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/yfinance/__init__.py", line 23, in <module>
+    from .search import Search
+  File "/home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/yfinance/search.py", line 27, in <module>
+    from .data import YfData
+  File "/home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/yfinance/data.py", line 6, in <module>
+    from bs4 import BeautifulSoup
+ModuleNotFoundError: No module named 'bs4'
