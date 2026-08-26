@@ -1,0 +1,67 @@
+/home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/bs4/css.py:40: UserWarning: The soupsieve package is not installed. CSS selectors cannot be used.
+  warnings.warn(
+17:00:07 - --- Starting Grand Unified Data Ingestion ---
+17:00:07 - Fetching Physics Engine Inputs (Job Losers, Income, Hours)...
+17:00:23 - Fetching US Core Macro...
+17:00:49 - Fetching Global Policy Inputs...
+17:01:40 - Fetching Market Internals...
+17:02:17 - 💾 Saved fresh data to local cache.
+17:02:17 - Initializing Continuous Cole Pulse Physics Engine...
+17:02:17 - Running Multivariate LSTM Forecast (CPU Execution)...
+17:02:18 - Loaded cached LSTM weights.
+17:02:20 - Generating Grand Unified Dashboard (Macro + Physics + 3D)...
+17:02:26 - Chromium init'ed with kwargs {}
+17:02:26 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
+17:02:26 - Temp directory created: /tmp/tmpf_vfdh8r.
+17:02:26 - Opening browser.
+17:02:26 - Temp directory created: /tmp/tmpj1bzakbu.
+17:02:26 - Temporary directory at: /tmp/tmpj1bzakbu
+17:02:29 - Closing browser.
+17:02:29 - Closing browser.
+17:02:29 - TemporaryDirectory.cleanup() worked.
+17:02:29 - shutil.rmtree worked.
+17:02:29 - TemporaryDirectory.cleanup() worked.
+17:02:29 - shutil.rmtree worked.
+17:02:29 - TemporaryDirectory.cleanup() worked.
+17:02:29 - shutil.rmtree worked.
+17:02:29 - Chromium init'ed with kwargs {}
+17:02:29 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
+17:02:29 - Temp directory created: /tmp/tmposyf83p9.
+17:02:29 - Opening browser.
+17:02:29 - Temp directory created: /tmp/tmpz4s3tooe.
+17:02:29 - Temporary directory at: /tmp/tmpz4s3tooe
+17:02:33 - Closing browser.
+17:02:33 - Closing browser.
+17:02:33 - TemporaryDirectory.cleanup() worked.
+17:02:33 - shutil.rmtree worked.
+17:02:33 - TemporaryDirectory.cleanup() worked.
+17:02:33 - shutil.rmtree worked.
+17:02:33 - TemporaryDirectory.cleanup() worked.
+17:02:33 - shutil.rmtree worked.
+17:02:33 - Chromium init'ed with kwargs {}
+17:02:33 - Found chromium path: /home/andrew/miniconda3/envs/tf_noavx/lib/python3.9/site-packages/choreographer/cli/browser_exe/chrome-linux64/chrome
+17:02:33 - Temp directory created: /tmp/tmpnpkyrmkx.
+17:02:33 - Opening browser.
+17:02:33 - Temp directory created: /tmp/tmp5n8il1pf.
+17:02:33 - Temporary directory at: /tmp/tmp5n8il1pf
+17:02:33 - TemporaryDirectory.cleanup() worked.
+17:02:33 - shutil.rmtree worked.
+17:02:33 - TemporaryDirectory.cleanup() worked.
+17:02:33 - shutil.rmtree worked.
+17:02:37 - Closing browser.
+17:02:37 - Closing browser.
+17:02:37 - TemporaryDirectory.cleanup() worked.
+17:02:37 - shutil.rmtree worked.
+17:02:37 - TemporaryDirectory.cleanup() worked.
+17:02:37 - shutil.rmtree worked.
+17:02:37 - TemporaryDirectory.cleanup() worked.
+17:02:37 - shutil.rmtree worked.
+17:02:37 - ✅ Saved high-res static PNGs for Substack export.
+17:02:37 - Saved AQI_Unified.html and standalone AQI_3d_physics_model.html
+17:02:37 - Generating Two-Tiered Substack Briefing (Free vs Paid)...
+17:03:02 - ✅ Substack Draft generated: /home/andrew/.ssh/Trading/AQI_Genesis/Substack_Draft_20260826.md
+17:03:02 - 💾 Pushing live data matrix to SaaS Database (Streamlit backend)...
+17:03:02 - ✅ SaaS Database updated. The AQI Genesis Streamlit Terminal is now live.
+17:03:22 - ✅ Briefing Sent Successfully.
+17:03:23 - TemporaryDirectory.cleanup() worked.
+17:03:23 - shutil.rmtree worked.
